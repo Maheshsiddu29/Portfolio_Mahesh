@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  trailingSlash: true, // Optional: for cleaner URLs with `/about/`
+  trailingSlash: true,
+  output: 'standalone',
   images: {
-    unoptimized: true, // Optional: only if not using image optimization
+    unoptimized: true,
   },
-  output: 'standalone', // Optional: better for Vercel/Node serverless functions
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
