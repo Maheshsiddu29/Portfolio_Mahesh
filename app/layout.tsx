@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Sai Mahesh Sure - Portfolio",
-  description: "Computer Science Master's Candidate | Full-Stack Developer | Blockchain & AR/VR Specialist",
+  description: "Computer Science Master's Candidate | Blockchain & AR/VR Developer",
   keywords: "Sai Mahesh Sure, Computer Science, Full Stack Developer, Blockchain, AR/VR, React, Unity3D, Ethereum",
   authors: [{ name: "Sai Mahesh Sure" }],
   openGraph: {
