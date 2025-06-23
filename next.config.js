@@ -1,18 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  trailingSlash: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  reactStrictMode: true,
+  trailingSlash: true, // Optional: for cleaner URLs with `/about/`
   images: {
-    unoptimized: true,
+    unoptimized: true, // Optional: only if not using image optimization
   },
-  basePath: process.env.NODE_ENV === "production" ? "/Portfolio_Mahesh" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/Portfolio_Mahesh/" : "",
-}
+  output: 'standalone', // Optional: better for Vercel/Node serverless functions
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
