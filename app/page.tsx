@@ -25,13 +25,13 @@ export default function Portfolio() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
 
-  // Always call Framer Motion hooks
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
+  // Commented out Framer Motion scroll hooks for debugging hydration error
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ["start start", "end end"],
+  // });
+  // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  // const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -193,7 +193,7 @@ export default function Portfolio() {
         {/* Animated Background */}
         <motion.div 
           className="fixed inset-0 opacity-30" 
-          style={{ y: backgroundY }}
+          // style={{ y: backgroundY }}
           onError={() => setHasError(true)}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20" />
@@ -249,7 +249,7 @@ export default function Portfolio() {
 
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center relative px-6 pt-24">
-          <motion.div style={{ y: textY }} className="text-center max-w-4xl mx-auto">
+          <motion.div className="text-center max-w-4xl mx-auto">
             <motion.div
               initial={{ scale: 0.3, opacity: 0, rotate: -10 }}
               animate={{ scale: 1, opacity: 1, rotate: 0 }}
