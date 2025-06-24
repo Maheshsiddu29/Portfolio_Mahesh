@@ -24,24 +24,19 @@ export default function Portfolio() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
-  
-  // Delay Framer Motion hooks until after mount
-  let scrollYProgress, backgroundY, textY
-  if (isLoaded && containerRef.current) {
-    scrollYProgress = useScroll({
-      target: containerRef,
-      offset: ["start start", "end end"],
-    }).scrollYProgress
-    backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-    textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
-  }
+
+  // Always call Framer Motion hooks
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  })
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    // Set loaded state after component mounts
     setIsLoaded(true)
-    
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
