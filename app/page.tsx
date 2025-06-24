@@ -25,13 +25,16 @@ export default function Portfolio() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
   
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
+  // Delay Framer Motion hooks until after mount
+  let scrollYProgress, backgroundY, textY
+  if (isLoaded && containerRef.current) {
+    scrollYProgress = useScroll({
+      target: containerRef,
+      offset: ["start start", "end end"],
+    }).scrollYProgress
+    backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+    textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
+  }
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 

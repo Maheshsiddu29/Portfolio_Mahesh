@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -10,6 +12,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  basePath: isProd ? '/Portfolio_Mahesh' : '',
+  assetPrefix: isProd ? '/Portfolio_Mahesh/' : '',
 };
 
 module.exports = nextConfig;
